@@ -17,12 +17,14 @@ public class MessageWebSocketHandler implements WebSocketHandler {
 		this.messageBrokerService = messageBrokerService;
 	}
 
+	// WebSocket 连接建立时调用
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// 暂时不区分，等待第一次消息来确认角色
 		System.out.println("New WebSocket connection established");
 	}
 
+	// 处理接收到的消息
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		String payload = message.getPayload().toString();
@@ -62,6 +64,7 @@ public class MessageWebSocketHandler implements WebSocketHandler {
 		session.close(CloseStatus.SERVER_ERROR);
 	}
 
+	// WebSocket 连接关闭时调用
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		// 如果订阅者断开连接，移除它

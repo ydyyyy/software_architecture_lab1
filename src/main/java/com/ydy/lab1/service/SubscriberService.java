@@ -18,7 +18,7 @@ public class SubscriberService {
 	private String topic;  // 通过外部配置指定订阅主题
 
 	@PostConstruct
-	public void subscribeToTopic() {
+	public void subscribeToTopic() {    // 连接到 WebSocket 服务器并订阅主题
 		StandardWebSocketClient webSocketClient = new StandardWebSocketClient();
 
 		webSocketClient.doHandshake(new TextWebSocketHandler() {
