@@ -20,7 +20,6 @@ public class SubscriberService {
 	@PostConstruct
 	public void subscribeToTopic() {    // 连接到 WebSocket 服务器并订阅主题
 		StandardWebSocketClient webSocketClient = new StandardWebSocketClient();
-
 		webSocketClient.doHandshake(new TextWebSocketHandler() {
 			@Override
 			public void afterConnectionEstablished(WebSocketSession session) throws Exception {
